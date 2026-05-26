@@ -1,1 +1,247 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cinematic Love Letter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }body {
+  overflow: hidden;
+  background: radial-gradient(circle at center, #120014, #000000);
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  height: 100vh;
+}
 
+.background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -2;
+}
+
+.heart {
+  position: absolute;
+  color: rgba(255, 0, 80, 0.7);
+  animation: float 10s linear infinite;
+  font-size: 20px;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) scale(0.5);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) scale(1.4);
+    opacity: 0;
+  }
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(3px);
+  z-index: -1;
+}
+
+.center-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  text-align: center;
+  transition: 1s ease;
+}
+
+.open-btn {
+  padding: 18px 40px;
+  border: 1px solid rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.05);
+  color: white;
+  font-size: 18px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.4s ease;
+  backdrop-filter: blur(10px);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  box-shadow: 0 0 30px rgba(255, 0, 80, 0.2);
+}
+
+.open-btn:hover {
+  transform: scale(1.07);
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(255, 0, 80, 0.5);
+}
+
+.subtitle {
+  margin-top: 20px;
+  font-size: 14px;
+  opacity: 0.8;
+  letter-spacing: 2px;
+}
+
+.letter-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.7);
+  width: 85%;
+  max-width: 800px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 30px;
+  padding: 50px;
+  backdrop-filter: blur(14px);
+  opacity: 0;
+  pointer-events: none;
+  transition: 1.5s ease;
+  box-shadow: 0 0 80px rgba(255, 0, 80, 0.15);
+}
+
+.letter-container.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: all;
+}
+
+h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 42px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #ffd6e7;
+}
+
+.line {
+  font-size: 18px;
+  line-height: 1.9;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: reveal 1s forwards;
+}
+
+.line:nth-child(2) { animation-delay: 1s; }
+.line:nth-child(3) { animation-delay: 3s; }
+.line:nth-child(4) { animation-delay: 5s; }
+.line:nth-child(5) { animation-delay: 7s; }
+.line:nth-child(6) { animation-delay: 9s; }
+
+@keyframes reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.signature {
+  margin-top: 40px;
+  text-align: right;
+  font-size: 20px;
+  color: #ff9dc0;
+  opacity: 0;
+  animation: reveal 1s forwards;
+  animation-delay: 11s;
+}
+
+.glow {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255,0,100,0.15), transparent 70%);
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: pulse 6s infinite alternate;
+  z-index: -1;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.3);
+  }
+}
+
+audio {
+  display: none;
+}
+
+@media(max-width: 768px) {
+  .letter-container {
+    padding: 30px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  .line {
+    font-size: 16px;
+  }
+}
+
+  </style>
+</head>
+<body><div class="background" id="hearts"></div>
+<div class="overlay"></div>
+<div class="glow"></div><div class="center-screen" id="startScreen">
+  <button class="open-btn" onclick="openLetter()">Press To Open</button>
+  <div class="subtitle">A cinematic message from the heart</div>
+</div><div class="letter-container" id="letter">
+  <h1>From The Bottom Of My Heart</h1>  <p class="line">
+    From the bottom of my heart... I need you to know something that words will never fully explain.
+  </p>  <p class="line">
+    I could never love another soul the way I love yours.
+  </p>  <p class="line">
+    In every universe, every lifetime, every version of me... my heart would still search for you.
+  </p>  <p class="line">
+    You became more than a person to me.
+    You became comfort, peace, warmth, and the feeling of home.
+  </p>  <p class="line">
+    And no matter what happens in this world...
+    a part of my soul will always belong to you.
+  </p>  <div class="signature">nhbek barcha Habibi ❤️</div>
+</div><audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio><script>
+  const heartsContainer = document.getElementById('hearts');
+
+  for(let i = 0; i < 40; i++) {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerHTML = '❤';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (5 + Math.random() * 8) + 's';
+    heart.style.fontSize = (12 + Math.random() * 30) + 'px';
+    heartsContainer.appendChild(heart);
+  }
+
+  function openLetter() {
+    document.getElementById('startScreen').style.opacity = '0';
+
+    setTimeout(() => {
+      document.getElementById('startScreen').style.display = 'none';
+      document.getElementById('letter').classList.add('show');
+    }, 1000);
+
+    const music = document.getElementById('music');
+    music.volume = 0.4;
+    music.play();
+  }
+</script></body>
+  </html>
