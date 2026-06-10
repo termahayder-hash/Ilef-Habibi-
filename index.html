@@ -256,11 +256,14 @@ h1{
 
         <div class="glow left"></div>
         <div class="glow right"></div>
+<h1>HABIBI ❤️</h1>
 
-        <h1>HABIBI ❤️</h1>
+<div class="heart-frame">
+    <img src="photo.jpg" alt="Our Photo">
+</div>
 
-        <div id="text"></div>
-
+<div id="text"></div>
+        
         <div id="finalLine">
             "And if I had to choose again,<br>
             I'd still choose you." ❤️
@@ -269,7 +272,51 @@ h1{
     </div>
 
 </div>
+.heart-frame{
+    width:220px;
+    height:220px;
+    margin:0 auto 30px;
+    position:relative;
+    transform:rotate(-45deg);
+    overflow:hidden;
+    box-shadow:0 0 35px rgba(255,100,100,.7);
+}
 
+.heart-frame,
+.heart-frame::before,
+.heart-frame::after{
+    background:#fff;
+}
+
+.heart-frame::before,
+.heart-frame::after{
+    content:'';
+    position:absolute;
+    width:220px;
+    height:220px;
+    border-radius:50%;
+}
+
+.heart-frame::before{
+    top:-110px;
+    left:0;
+}
+
+.heart-frame::after{
+    left:110px;
+    top:0;
+}
+
+.heart-frame img{
+    position:absolute;
+    width:320px;
+    height:320px;
+    object-fit:cover;
+    top:-50px;
+    left:-50px;
+    transform:rotate(45deg);
+    z-index:2;
+}
 <script>
 
 /* Particles */
