@@ -1,246 +1,368 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cinematic Love Letter</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }body {
-  overflow: hidden;
-  background: radial-gradient(circle at center, #120014, #000000);
-  font-family: 'Poppins', sans-serif;
-  color: white;
-  height: 100vh;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>made with love ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Georgia',serif;
 }
 
-.background {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: -2;
+body{
+    overflow:hidden;
+    background:#050505;
+    color:white;
 }
 
-.heart {
-  position: absolute;
-  color: rgba(255, 0, 80, 0.7);
-  animation: float 10s linear infinite;
-  font-size: 20px;
+.background{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+    radial-gradient(circle at center,#3b0a0a 0%,#100505 40%,#000 100%);
 }
 
-@keyframes float {
-  0% {
-    transform: translateY(100vh) scale(0.5);
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-120vh) scale(1.4);
-    opacity: 0;
-  }
+.particle{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    opacity:.5;
+    animation:float 12s linear infinite;
 }
 
-.overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.4);
-  backdrop-filter: blur(3px);
-  z-index: -1;
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+    20%{opacity:.8;}
+    to{
+        transform:translateY(-100vh);
+        opacity:0;
+    }
 }
 
-.center-screen {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100vh;
-  flex-direction: column;
-  text-align: center;
-  transition: 1s ease;
+/* PAGE 1 */
+
+#page1{
+    position:absolute;
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    transition:1.5s;
 }
 
-.open-btn {
-  padding: 18px 40px;
-  border: 1px solid rgba(255,255,255,0.4);
-  background: rgba(255,255,255,0.05);
-  color: white;
-  font-size: 18px;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: 0.4s ease;
-  backdrop-filter: blur(10px);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  box-shadow: 0 0 30px rgba(255, 0, 80, 0.2);
+.title{
+    font-size:2.5rem;
+    margin-bottom:40px;
+    letter-spacing:4px;
+    text-shadow:0 0 20px rgba(255,255,255,.5);
 }
 
-.open-btn:hover {
-  transform: scale(1.07);
-  background: rgba(255,255,255,0.1);
-  box-shadow: 0 0 40px rgba(255, 0, 80, 0.5);
+.envelope{
+    width:320px;
+    height:220px;
+    position:relative;
+    cursor:pointer;
+    transition:1s;
 }
 
-.subtitle {
-  margin-top: 20px;
-  font-size: 14px;
-  opacity: 0.8;
-  letter-spacing: 2px;
+.envelope:hover{
+    transform:scale(1.05);
 }
 
-.letter-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.7);
-  width: 85%;
-  max-width: 800px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 30px;
-  padding: 50px;
-  backdrop-filter: blur(14px);
-  opacity: 0;
-  pointer-events: none;
-  transition: 1.5s ease;
-  box-shadow: 0 0 80px rgba(255, 0, 80, 0.15);
+.base{
+    width:100%;
+    height:100%;
+    background:#d8c2a5;
+    position:absolute;
+    border-radius:5px;
 }
 
-.letter-container.show {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-  pointer-events: all;
+.flap{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#c8b08d;
+    clip-path:polygon(0 0,100% 0,50% 60%);
+    transform-origin:top;
+    transition:1.2s;
 }
 
-h1 {
-  font-family: 'Cinzel', serif;
-  font-size: 42px;
-  margin-bottom: 30px;
-  text-align: center;
-  color: #ffd6e7;
+.open .flap{
+    transform:rotateX(180deg);
 }
 
-.line {
-  font-size: 18px;
-  line-height: 1.9;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: reveal 1s forwards;
+.button{
+    margin-top:40px;
+    padding:14px 40px;
+    border:none;
+    border-radius:50px;
+    background:white;
+    color:black;
+    font-size:1rem;
+    cursor:pointer;
+    transition:.4s;
 }
 
-.line:nth-child(2) { animation-delay: 1s; }
-.line:nth-child(3) { animation-delay: 3s; }
-.line:nth-child(4) { animation-delay: 5s; }
-.line:nth-child(5) { animation-delay: 7s; }
-.line:nth-child(6) { animation-delay: 9s; }
-
-@keyframes reveal {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.button:hover{
+    transform:scale(1.08);
 }
 
-.signature {
-  margin-top: 40px;
-  text-align: right;
-  font-size: 20px;
-  color: #ff9dc0;
-  opacity: 0;
-  animation: reveal 1s forwards;
-  animation-delay: 11s;
+/* PAGE 2 */
+
+#page2{
+    position:absolute;
+    width:100%;
+    height:100%;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
 }
 
-.glow {
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(255,0,100,0.15), transparent 70%);
-  border-radius: 50%;
-  filter: blur(40px);
-  animation: pulse 6s infinite alternate;
-  z-index: -1;
+.letter{
+    width:90%;
+    max-width:800px;
+    background:#f8f1df;
+    color:#222;
+    padding:50px;
+    border-radius:12px;
+    box-shadow:
+    0 0 60px rgba(255,220,150,.35),
+    0 0 120px rgba(255,180,100,.2);
+    position:relative;
+    overflow-y:auto;
+    max-height:90vh;
 }
 
-@keyframes pulse {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.3);
-  }
+.letter::before{
+    content:"";
+    position:absolute;
+    top:-20px;
+    left:50%;
+    transform:translateX(-50%);
+    width:160px;
+    height:40px;
+    background:rgba(255,220,120,.2);
+    filter:blur(20px);
 }
 
-audio {
-  display: none;
+h1{
+    text-align:center;
+    margin-bottom:30px;
 }
 
-@media(max-width: 768px) {
-  .letter-container {
-    padding: 30px;
-  }
-
-  h1 {
-    font-size: 30px;
-  }
-
-  .line {
-    font-size: 16px;
-  }
+#text{
+    line-height:2;
+    font-size:1.15rem;
+    white-space:pre-wrap;
 }
 
-  </style>
+#finalLine{
+    margin-top:40px;
+    text-align:center;
+    font-style:italic;
+    font-size:1.3rem;
+    opacity:0;
+    color:#8b0000;
+    transition:opacity 3s ease;
+}
+
+/* Candle glow */
+
+.glow{
+    position:absolute;
+    width:250px;
+    height:250px;
+    background:rgba(255,180,70,.18);
+    border-radius:50%;
+    filter:blur(70px);
+    animation:flicker 3s infinite;
+}
+
+.left{
+    left:-100px;
+    bottom:-100px;
+}
+
+.right{
+    right:-100px;
+    top:-100px;
+}
+
+@keyframes flicker{
+    0%,100%{opacity:.7;}
+    50%{opacity:1;}
+}
+
+/* Rose petals */
+
+.petal{
+    position:absolute;
+    font-size:20px;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-100px) rotate(0deg);
+    }
+    to{
+        transform:translateY(120vh) rotate(360deg);
+    }
+}
+</style>
 </head>
-<body><div class="background" id="hearts"></div>
-<div class="overlay"></div>
-<div class="glow"></div><div class="center-screen" id="startScreen">
-  <button class="open-btn" onclick="openLetter()">Press To Open</button>
-  <div class="subtitle">A cinematic message from the heart</div>
-</div><div class="letter-container" id="letter">
-  <h1>From The Bottom Of My Heart</h1>  <p class="line">
-    From the bottom of my heart... I need you to know something that words will never fully explain.
-  </p>  <p class="line">
-    we should have a date 
-    
-    
-  </p>  <p class="line">
-    lezmna netkablou ale krib
-  </p>  <div class="signature">
-    andek haliin'  
-    lhal lawel netkbalou 
-    lhal theni netkablou zeda >❤️</div>
-</div><audio id="music" loop>
-  <source src="music.mp3" type="audio/mpeg">
-</audio><script>
-  const heartsContainer = document.getElementById('hearts');
 
-  for(let i = 0; i < 40; i++) {
-    const heart = document.createElement('div');
-    heart.classList.add('heart');
-    heart.innerHTML = '❤';
-    heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.animationDuration = (5 + Math.random() * 8) + 's';
-    heart.style.fontSize = (12 + Math.random() * 30) + 'px';
-    heartsContainer.appendChild(heart);
-  }
+<body>
 
-  function openLetter() {
-    document.getElementById('startScreen').style.opacity = '0';
+<div class="background"></div>
 
-    setTimeout(() => {
-      document.getElementById('startScreen').style.display = 'none';
-      document.getElementById('letter').classList.add('show');
-    }, 1000);
+<!-- PAGE 1 -->
 
-    const music = document.getElementById('music');
-    music.volume = 0.4;
-    music.play();
-  }
-</script></body>
-  </html>
+<div id="page1">
+
+    <div class="title">
+        A LETTER FOR YOU ❤️
+    </div>
+
+    <div class="envelope" id="envelope">
+        <div class="base"></div>
+        <div class="flap"></div>
+    </div>
+
+    <button class="button" onclick="openLetter()">
+        Open Letter
+    </button>
+
+</div>
+
+<!-- PAGE 2 -->
+
+<div id="page2">
+
+    <div class="letter">
+
+        <div class="glow left"></div>
+        <div class="glow right"></div>
+
+        <h1>HABIBI ❤️</h1>
+
+        <div id="text"></div>
+
+        <div id="finalLine">
+            "And if I had to choose again,<br>
+            I'd still choose you." ❤️
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+/* Particles */
+
+for(let i=0;i<80;i++){
+    let p=document.createElement('div');
+    p.className='particle';
+    p.style.left=Math.random()*100+'vw';
+    p.style.animationDuration=(8+Math.random()*10)+'s';
+    p.style.animationDelay=Math.random()*10+'s';
+    document.body.appendChild(p);
+}
+
+/* Roses */
+
+for(let i=0;i<25;i++){
+    let r=document.createElement('div');
+    r.className='petal';
+    r.innerHTML='🌹';
+    r.style.left=Math.random()*100+'vw';
+    r.style.animationDuration=(8+Math.random()*8)+'s';
+    r.style.animationDelay=Math.random()*10+'s';
+    document.body.appendChild(r);
+}
+
+/* Letter Text */
+
+const letterText = `HABIBI:
+
+i'm sorry for the moments when my worries spoke louder than my heart
+
+for the times I wasn't as gentle, as patient or as present as you deserved
+
+i know I overthink , I know I got lost in my own storms
+
+but please never doubt this ;
+
+you matter to me more than anything i've ever tried to put into words .
+
+thank you for staying ,for trying,for understanding me even when I make it hard ,m working in my self every day not to be perfect ,but to be someone who loves you the way you always deserved.
+
+because having you in my life isn't just special it's the part of my world I never want to take for granted .
+
+nhbek bercha habib rouhi ❤️`;
+
+function openLetter(){
+
+    document.getElementById('envelope').classList.add('open');
+
+    setTimeout(()=>{
+
+        document.getElementById('page1').style.opacity='0';
+
+        setTimeout(()=>{
+
+            document.getElementById('page1').style.display='none';
+            document.getElementById('page2').style.display='flex';
+
+            typeWriter();
+
+        },1000);
+
+    },1200);
+}
+
+function typeWriter(){
+
+    let i=0;
+    const speed=35;
+    const target=document.getElementById("text");
+
+    function type(){
+
+        if(i < letterText.length){
+
+            target.innerHTML += letterText.charAt(i);
+            i++;
+
+            setTimeout(type,speed);
+
+        }else{
+
+            setTimeout(()=>{
+                document.getElementById("finalLine").style.opacity="1";
+            },3000);
+
+        }
+    }
+
+    type();
+}
+
+</script>
+
+</body>
+</html>
