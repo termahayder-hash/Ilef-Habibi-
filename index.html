@@ -221,7 +221,27 @@ h1{
     to{
         transform:translateY(120vh) rotate(360deg);
     }
+} 
+@keyframes fall{
+    from{
+        transform:translateY(-100px) rotate(0deg);
+    }
+    to{
+        transform:translateY(120vh) rotate(360deg);
+    }
 }
+
+/* PASTE THE NEW HEART CSS HERE */
+
+.photo-show{
+    opacity:0;
+    transform:scale(.8);
+    animation:photoAppear 2s forwards;
+}
+
+/* rest of the new CSS... */
+
+    
 </style>
 </head>
 
@@ -403,6 +423,18 @@ function typeWriter(){
             },3000);
 
         }
+    } 
+    }else{
+
+    setTimeout(()=>{
+        document.getElementById("finalLine").style.opacity="1";
+
+        setTimeout(()=>{
+            document.getElementById("secretMessage").style.opacity="1";
+        },3000);
+
+    },3000);
+
     }
 
     type();
